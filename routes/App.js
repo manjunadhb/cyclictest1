@@ -2,6 +2,7 @@ const express = require("express");
 const mysql = require("mysql");
 const multer = require("multer");
 const bcrypt = require("bcrypt");
+
 require("dotenv").config();
 const router = express.Router();
 

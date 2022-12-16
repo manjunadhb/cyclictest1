@@ -3,6 +3,7 @@ const cors = require("cors");
 const mysql = require("mysql");
 const multer = require("multer");
 const bcrypt = require("bcrypt");
+const path = require("path");
 require("dotenv").config();
 const app = express();
 
@@ -12,6 +13,11 @@ app.use(cors());
 app.use(express.json());
 // app.use(express.urlencoded());
 app.use("/uploads", express.static("uploads"));
+app.use(path.join(__dirname, "./webclient/build"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./webclient/build/index.html"));
+});
 
 app.use("/", appRouter);
 
